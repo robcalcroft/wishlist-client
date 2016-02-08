@@ -57,3 +57,28 @@
     position: relative;
     top: -7px;
 }
+
+.drop-down-selected {
+    background-color: rgb(238,238,238);
+}
+
+.full-width {
+    width: 100%;
+}
+
+button.full-width {
+    width: 100%;
+    display: block;
+}
+
+.top-spacer-large {
+    margin-top: 5vh !important;
+}
+
+.top-spacer-medium {
+    margin-top: 2.5vh !important;
+}
+
+.top-spacer-small {
+    margin-top: 1vh !important;
+}

@@ -38,7 +38,8 @@ export default {
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
-            'window.jQuery': 'jquery'
+            'window.jQuery': 'jquery',
+            moment: 'moment'
         })
     ]
 };

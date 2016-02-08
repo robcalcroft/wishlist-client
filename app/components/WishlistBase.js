@@ -5,7 +5,18 @@ export default class WishlistBase extends React.Component {
     constructor() {
         super();
 
-        this.wishlistBaseUri = 'http://wishlist.pw';
+        this.wishlistBaseUri = 'http://192.168.0.16';
+    }
+
+    getBaseUri() {
+        return this.wishlistBaseUri;
+    }
+
+    changePageTo(uri) {
+        if(!uri) {
+            throw new Error('No URI present');
+        }
+        document.location.href = uri;
     }
 
     // Handles authentication and refreshing of token
@@ -45,5 +56,9 @@ export default class WishlistBase extends React.Component {
             }
             callback(response);
         });
+    }
+
+    errorHandler(err, status, message = 'Default message') {
+
     }
 }
