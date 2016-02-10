@@ -5,7 +5,7 @@ export default class WishlistBase extends React.Component {
     constructor() {
         super();
 
-        this.wishlistBaseUri = 'http://192.168.0.16';
+        this.wishlistBaseUri = 'http://wishlist.pw';
     }
 
     getBaseUri() {
@@ -20,45 +20,50 @@ export default class WishlistBase extends React.Component {
     }
 
     // Handles authentication and refreshing of token
-    wishlistAPI(options, callback) {
-        if(!localStorage.getItem('access_token')) {
-            callback('no_access_token', false);
-        }
+    // This is very dirty
+    wishlistAPI(options) {
+        return new Promise((resolve, reject) => {
+            if(!localStorage.getItem('access_token')) {
+                reject('no_access_token');
+            }
 
-        $.ajax({
-            url: `${this.wishlistBaseUri}${options.uri}`,
-            method: options.method,
-            data: options.data,
-            headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
-            }
-        })
-        .done((result) => {
-            callback(null, result);
-        })
-        .fail((response) => {
-            if(response.status === 401 && !options.rtRetry) {
-                return $.ajax({
-                    url: '/api/token',
-                    method: 'GET',
-                    data: {
-                        refresh_token: localStorage.getItem('refresh_token')
-                    }
-                })
-                .done((result) => {
-                    localStorage.setItem('access_token', result.access_token);
-                    options.rtRetry = true;
-                    this.wishlistAPI(options, callback);
-                })
-                .fail((response_1) => {
-                    callback(response_1);
-                });
-            }
-            callback(response);
+            $.ajax({
+                url: `${this.wishlistBaseUri}${options.uri}`,
+                method: options.method,
+                data: options.data,
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                }
+            })
+            .done((result) => {
+                resolve(result);
+            })
+            .fail((response) => {
+                if(response.status === 401 && !options.rtRetry) {
+                    return $.ajax({
+                        url: '/api/token',
+                        method: 'GET',
+                        data: {
+                            refresh_token: localStorage.getItem('refresh_token')
+                        }
+                    })
+                    .done((result) => {
+                        localStorage.setItem('access_token', result.access_token);
+                        options.rtRetry = true;
+                        this.wishlistAPI(options).then(resolve).catch(reject);
+                    })
+                    .fail((response_1) => {
+                        reject(response_1);
+                    });
+                }
+                reject(response);
+            });
         });
+
+
     }
 
-    errorHandler(err, status, message = 'Default message') {
-
+    errorHandler(err, status = 500, message = 'Application Error') {
+        console.log(err, status, message);
     }
 }

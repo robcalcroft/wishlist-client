@@ -10,7 +10,7 @@ import Wishlist from './components/routes/Wishlist';
 
 // Styles
 import './styles/sass/materialize.scss';
-import './styles/wishlist.css';
+import './styles/wishlist.scss';
 
 // Scripts
 import './scripts/is-mobile.js';

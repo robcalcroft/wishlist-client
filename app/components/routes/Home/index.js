@@ -9,7 +9,7 @@ export default class Home extends WishlistBase {
 
     render() {
         return (
-            <Container>
+            <Container username={localStorage.getItem('username')}>
                 Hello there
             </Container>
         );

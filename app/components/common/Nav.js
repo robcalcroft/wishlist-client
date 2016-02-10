@@ -3,10 +3,14 @@ import WishlistBase from '../WishlistBase';
 
 export default class Nav extends WishlistBase {
 
-    componentWillMount() {
-        $(() => {
-            $('.button-collapse').sideNav();
-        });
+    componentDidMount() {
+        $('.button-collapse').sideNav();
+    }
+
+    logoutClickHandler(event) {
+        event.preventDefault();
+        localStorage.clear();
+        this.changePageTo('/');
     }
 
     render() {
@@ -22,6 +26,9 @@ export default class Nav extends WishlistBase {
                         <ul className='hide-on-med-and-down right'>
                             <li className='active'>
                                 <a href={`/${this.props.username}`}>{this.props.username}</a>
+                            </li>
+                            <li>
+                                <a onClick={this.logoutClickHandler.bind(this)} href='#'>Logout</a>
                             </li>
                         </ul>:
                         <ul className='hide-on-med-and-down right'>

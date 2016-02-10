@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Breadcrumbs extends React.Component {
 
     processBreadcrumbs(breadcrumbs) {
         let key = 0;
         return breadcrumbs.map(breadcrumb => {
-            return <a key={key++} href={breadcrumb.href} className='breadcrumb'>{breadcrumb.text}</a>;
+            return <Link key={key++} to={breadcrumb.href} className='breadcrumb'>{breadcrumb.text}</Link>;
         });
     }
 

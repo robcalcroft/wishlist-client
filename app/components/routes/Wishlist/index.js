@@ -4,6 +4,7 @@ import WishlistItemCardList from '../../common/WishlistItemCardList';
 import WishlistCard from '../../common/WishlistCard';
 import Container from '../../common/Container';
 import Breadcrumbs from '../../common/Breadcrumbs';
+import NewWishlistItem from '../../common/NewWishlistItem';
 
 export default class Wishlist extends WishlistBase {
 
@@ -25,90 +26,85 @@ export default class Wishlist extends WishlistBase {
     }
 
 
-    deleteWishistItemHandler(e) {
-        e.preventDefault();
-        let wishlistItemId = $(e.target).data('wishlistitemid');
+    deleteWishistItemHandler(event) {
+        event.preventDefault();
+        let button = $(event.target);
+        let wishlistItemId = button.data('wishlistitemid');
 
-        this.wishlistAPI(
-            {
-                uri: `/api/1/wishlist/item?wishlist_item_id=${wishlistItemId}`,
-                method: 'DELETE'
-            },
-            (err, data) => {
-                if(err) {
-                    return console.log(err);
-                }
+        if(button.attr('data-confirm') !== 'on') {
+            button.html('Are you sure?').attr('data-confirm', 'on');
 
-                this.loadWishlistItems({ wishlist_id: this.props.params.wishlistId });
-            }
-        );
+            // Reset the button
+            return setTimeout(() => {
+                button.html('Delete').attr('data-confirm', 'off');
+            }, 2000);
+        }
+
+        this.wishlistAPI({
+            uri: `/api/1/wishlist/item?wishlist_item_id=${wishlistItemId}`,
+            method: 'DELETE'
+        })
+        .then(() => {
+            this.loadWishlistItems({ wishlist_id: this.props.params.wishlistId });
+        })
+        .catch(this.errorHandler);
     }
 
 
     loadWishlistItems(options) {
-        this.wishlistAPI(
-            {
-                uri: '/api/1/wishlist/item',
-                method: 'GET',
-                data: options
-            },
-            (err, data) => {
-                if(err) {
-                    if(err.status === 404) {
-                        this.setState({
-                            wishlistItems: []
-                        });
-                    }
-                    return console.log(err);
-                }
-
+        this.wishlistAPI({
+            uri: '/api/1/wishlist/item',
+            method: 'GET',
+            data: options
+        })
+        .then((data) => {
+            this.setState({
+                wishlistItems: data.result
+            });
+        })
+        .catch((err) => {
+            if(err.status === 404) {
                 this.setState({
-                    wishlistItems: data.result
+                    wishlistItems: []
                 });
             }
-        );
+            this.errorHandler(err);
+        });
     }
 
-    loadWishlistMeta(wishlistId) {
-        this.wishlistAPI(
-            {
-                uri: '/api/1/wishlist',
-                method: 'GET',
-                data: {
-                    wishlist_id: wishlistId
-                }
-            },
-            (err, data) => {
-                if(err) {
-                    return console.log(err);
-                }
-
-                this.setState({
-                    wishlist: data.result[0]
-                });
-            }
-        );
+    loadWishlist(wishlistId) {
+        this.wishlistAPI({
+            uri: '/api/1/wishlist',
+            method: 'GET',
+            data: { wishlist_id: wishlistId }
+        })
+        .then((data) => {
+            this.setState({
+                wishlist: data.result[0]
+            });
+        })
+        .catch(this.errorHandler);
     }
 
-    wishlistItemsFilterSort(e) {
-        e.preventDefault();
+    wishlistItemsFilterSort(event) {
+        event.preventDefault();
 
-        if(e.target.parentElement.parentElement.id === 'priority_drop') {
-            let priority = $(e.target).data('priority');
+        if(event.target.parentElement.parentElement.id === 'priority_drop') {
+            const priority = $(event.target).data('priority');
 
             if(this.filters.priority.indexOf(priority) === -1) {
-                $(e.target).addClass('drop-down-selected');
+                $(event.target).addClass('drop-down-selected');
                 this.filters.priority.push(priority);
             } else {
-                $(e.target).removeClass('drop-down-selected');
+                $(event.target).removeClass('drop-down-selected');
                 this.filters.priority.splice(this.filters.priority.indexOf(priority), 1);
             }
 
         }
 
-        if(e.target.parentElement.parentElement.id === 'sortbydate_drop') {
+        if(event.target.parentElement.parentElement.id === 'sortbydate_drop') {
             $('a[data-order]').toggleClass('drop-down-selected');
-            this.sorters.date = $(e.target).attr('data-order');
+            this.sorters.date = $(event.target).attr('data-order');
         }
 
         this.loadWishlistItems({
@@ -128,12 +124,12 @@ export default class Wishlist extends WishlistBase {
 
     componentWillMount() {
         this.loadWishlistItems({ wishlist_id: this.props.params.wishlistId });
-        this.loadWishlistMeta(this.props.params.wishlistId);
+        this.loadWishlist(this.props.params.wishlistId);
     }
 
     render() {
         return (
-            <Container username={this.props.params.username}>
+            <Container username={localStorage.getItem('username')}>
                 <Breadcrumbs
                     breadcrumbs={[
                         {
@@ -150,7 +146,11 @@ export default class Wishlist extends WishlistBase {
                     <div className='col l4 s12'>
                         <div className='row'>
                             <div className='col s12'>
-                                <WishlistCard wishlist={this.state.wishlist} noLink='true' vertical='true' />
+                                <WishlistCard
+                                    showControls='false'
+                                    wishlist={this.state.wishlist}
+                                    vertical='true'
+                                />
                             </div>
                             <div className='col s12'>
                                 <div className='card'>
@@ -186,7 +186,14 @@ export default class Wishlist extends WishlistBase {
                         </div>
                     </div>
                     <div className='col l8 s12'>
-                        <WishlistItemCardList deleteWishistItemHandler={this.deleteWishistItemHandler.bind(this)} wishlistItems={this.state.wishlistItems} />
+                        <NewWishlistItem
+                            loadWishlistItems={this.loadWishlistItems.bind(this)}
+                            wishlistId={this.state.wishlist.wishlistId}
+                        />
+                        <WishlistItemCardList
+                            deleteHandler={this.deleteWishistItemHandler.bind(this)}
+                            wishlistItems={this.state.wishlistItems}
+                        />
                     </div>
                 </div>
             </Container>

@@ -1,13 +1,18 @@
 import React from 'react';
 import WishlistBase from '../WishlistBase';
+import LoadingCard from './LoadingCard';
 import { Link } from 'react-router';
 import moment from 'moment';
+import EditWishlist from './EditWishlist';
 
 export default class WishlistCard extends WishlistBase {
     render() {
+        if(!Object.keys(this.props.wishlist).length) {
+            return <LoadingCard />;
+        }
+
         return (
-            <div id='wishlistCard'>
-                <Link to={this.props.noLink ? '' : `/${this.props.username}/wishlist/${this.props.wishlist.wishlistId}`}>
+            <div id={`wishlistCard${this.props.wishlist.wishlistId}`}>
                     <div className="card">
                         <div className='card-content' style={{color: 'black'}}>
                             <div className='row'>
@@ -35,13 +40,21 @@ export default class WishlistCard extends WishlistBase {
                                     </p>
                                 </div>
                                 <div className={`col ${this.props.vertical ? 's12' : 'l4 s12'}`}>
-                                    <button className="waves-effect waves-light btn full-width top-spacer-small">Edit</button>
-                                    <button className="red darken-1 waves-effect waves-light btn full-width top-spacer-small">Delete</button>
+                                    {
+                                        this.props.showControls === 'false' ? null :
+                                        <div className='cardControls'>
+                                            <Link style={{color:'white !important'}} to={`/${this.props.username}/wishlist/${this.props.wishlist.wishlistId}`}><button className="waves-effect waves-light btn full-width top-spacer-small">View</button></Link>
+                                            <EditWishlist
+                                                updateHandler={this.props.updateHandler}
+                                                wishlistId={this.props.wishlist.wishlistId}
+                                            />
+                                            <button onClick={this.props.deleteHandler} data-wishlistid={this.props.wishlist.wishlistId} className="red darken-1 waves-effect waves-light btn full-width top-spacer-small">Delete</button>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
                     </div>
-                </Link>
             </div>
         );
     }

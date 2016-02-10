@@ -53,23 +53,16 @@ export default class Callback extends WishlistBase {
             localStorage.setItem('refresh_token', data.refresh_token);
 
             // Collect user details
-            this.wishlistAPI(
-                {
-                    uri: '/api/1/user',
-                    method: 'GET'
-                },
-                (err, data) => {
-                    if(err) {
-                        return console.log(err);
-                    }
+            this.wishlistAPI({
+                uri: '/api/1/user',
+                method: 'GET'
+            })
+            .then((data) => {
+                localStorage.setItem('username', data.result.username);
 
-                    localStorage.setItem('username', data.result.username);
-
-                    setTimeout(() => {
-                        this.changePageTo(`/${data.result.username}`);
-                    }, 1000);
-                }
-            );
+                this.changePageTo(`/${data.result.username}`);
+            })
+            .catch(this.errorHandler);
         })
         .fail(() => {
             this.setState({
