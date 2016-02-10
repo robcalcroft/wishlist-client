@@ -13,7 +13,7 @@ export default class WishlistCard extends WishlistBase {
 
         return (
             <div id={`wishlistCard${this.props.wishlist.wishlistId}`}>
-                    <div className="card">
+                    <div className='card'>
                         <div className='card-content' style={{color: 'black'}}>
                             <div className='row'>
                                 <div className={`col ${this.props.vertical ? 's12' : 'l4 m6 s12'}`}>
@@ -43,12 +43,12 @@ export default class WishlistCard extends WishlistBase {
                                     {
                                         this.props.showControls === 'false' ? null :
                                         <div className='cardControls'>
-                                            <Link style={{color:'white !important'}} to={`/${this.props.username}/wishlist/${this.props.wishlist.wishlistId}`}><button className="waves-effect waves-light btn full-width top-spacer-small">View</button></Link>
+                                            <Link style={{color:'white !important'}} to={`/${this.props.username}/wishlist/${this.props.wishlist.wishlistId}`}><button className='waves-effect waves-light btn full-width top-spacer-small'>View</button></Link>
                                             <EditWishlist
                                                 updateHandler={this.props.updateHandler}
                                                 wishlistId={this.props.wishlist.wishlistId}
                                             />
-                                            <button onClick={this.props.deleteHandler} data-wishlistid={this.props.wishlist.wishlistId} className="red darken-1 waves-effect waves-light btn full-width top-spacer-small">Delete</button>
+                                            <button onClick={this.props.deleteHandler} data-wishlistid={this.props.wishlist.wishlistId} className='red darken-1 waves-effect waves-light btn full-width top-spacer-small'>Delete</button>
                                         </div>
                                     }
                                 </div>

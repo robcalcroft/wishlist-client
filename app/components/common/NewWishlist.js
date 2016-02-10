@@ -18,8 +18,8 @@ export default class NewWishlist extends React.Component {
             <div className='wishlist-create'>
                 <button id={this.modalButtonId} data-target={this.modalId} className='modal-trigger amber darken-1 waves-effect waves-light btn full-width'>New Wishlist +</button>
 
-                <div id={this.modalId} className="modal bottom-sheet">
-                    <div className="modal-content">
+                <div id={this.modalId} className='modal bottom-sheet'>
+                    <div className='modal-content'>
                         <div className='row'>
                             <div className='col offset-l1 l11 offset-m1 m11 s12'>
                                 <h5>Create a new Wishlist</h5>
@@ -29,16 +29,16 @@ export default class NewWishlist extends React.Component {
                                         <form onSubmit={this.props.createHandler}>
                                             <div className='row'>
                                                 <div className='input-field'>
-                                                    <input id="title" type="text" name='title' autofocus required />
-                                                    <label htmlFor="title">Title</label>
+                                                    <input id='title' type='text' name='title' autofocus required />
+                                                    <label htmlFor='title'>Title</label>
                                                 </div>
                                             </div>
                                             <div className='row'>
-                                                <div className="switch">
+                                                <div className='switch'>
                                                     <label>
                                                         Public
-                                                        <input name='privacy' type="checkbox" />
-                                                        <span className="lever"></span>
+                                                        <input name='privacy' type='checkbox' />
+                                                        <span className='lever'></span>
                                                         Private
                                                     </label>
                                               </div>

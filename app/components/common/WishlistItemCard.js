@@ -30,9 +30,9 @@ export default class WishlistItemCard extends WishlistBase {
                             </p>
                         </div>
                         <div className='col s12 m4'>
-                            <a href={this.props.wishlistItem.sourceURI} className="amber darken-1 waves-effect waves-light btn full-width top-spacer-small">Buy It</a>
-                            <button href='#' className="waves-effect waves-light btn full-width top-spacer-small">Edit</button>
-                            <button onClick={this.props.deleteHandler} data-wishlistitemid={this.props.wishlistItem.wishlistItemId} href='#' className="red darken-1 waves-effect waves-light btn full-width top-spacer-small">Delete</button>
+                            <a href={this.props.wishlistItem.sourceURI} className='amber darken-1 waves-effect waves-light btn full-width top-spacer-small'>Buy It</a>
+                            <button href='#' className='waves-effect waves-light btn full-width top-spacer-small'>Edit</button>
+                            <button onClick={this.props.deleteHandler} data-wishlistitemid={this.props.wishlistItem.wishlistItemId} href='#' className='red darken-1 waves-effect waves-light btn full-width top-spacer-small'>Delete</button>
                             <p className='grey-text center top-spacer-small'>Added on {moment(this.props.wishlistItem.dateCreated).format('DD/MM/YYYY')}</p>
                         </div>
                     </div>

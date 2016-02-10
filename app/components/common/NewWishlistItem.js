@@ -79,8 +79,8 @@ export default class NewWishlistItem extends WishlistBase {
             <div className='newWishlistItem top-spacer-small'>
                 <button id='modal-bottom-newWishlistItem' data-target='create_wishlist_item_modal' className='modal-trigger amber darken-1 waves-effect waves-light btn full-width'>New Item +</button>
 
-                <div id="create_wishlist_item_modal" className="modal bottom-sheet">
-                    <div className="modal-content">
+                <div id='create_wishlist_item_modal' className='modal bottom-sheet'>
+                    <div className='modal-content'>
                         <div className='row'>
                             <div className='col offset-l1 l11 offset-m1 m11 s12'>
                                 <h5>Add an Item {this.state.loading ? <Spinner size='x-small' /> : null}</h5>
@@ -90,8 +90,8 @@ export default class NewWishlistItem extends WishlistBase {
                                         <form onSubmit={this.props.wishlistItemCreateSubmitHandler}>
                                             <div className='row'>
                                                 <div className='input-field'>
-                                                    <input onChange={this.uriChangeHandler.bind(this)} id="source_uri" type="text" name='source_uri' autofocus required />
-                                                    <label htmlFor="source_uri">Website Link</label>
+                                                    <input onChange={this.uriChangeHandler.bind(this)} id='source_uri' type='text' name='source_uri' autofocus required />
+                                                    <label htmlFor='source_uri'>Website Link</label>
                                                 </div>
                                             </div>
                                         </form>

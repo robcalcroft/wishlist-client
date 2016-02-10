@@ -43,8 +43,8 @@ export default class EditWishlist extends WishlistBase {
             <div className='editWishlist'>
                 <button id={this.modalButtonId} data-target={this.modalId} className='modal-trigger darken-1 waves-effect waves-light btn full-width top-spacer-small'>Edit Wishlist</button>
 
-                <div id={this.modalId} className="modal bottom-sheet">
-                    <div className="modal-content">
+                <div id={this.modalId} className='modal bottom-sheet'>
+                    <div className='modal-content'>
                         <div className='row'>
                             <div className='col offset-l1 l11 offset-m1 m11 s12'>
                                 <h5>Edit a Wishlist</h5>
@@ -56,16 +56,16 @@ export default class EditWishlist extends WishlistBase {
                                             <form onSubmit={this.props.updateHandler} data-wishlistid={this.props.wishlistId}>
                                                 <div className='row'>
                                                     <div className='input-field'>
-                                                        <input id="title" type="text" name='title' defaultValue={this.state.wishlist.title} autofocus required />
-                                                        <label className='active' htmlFor="title">Title</label>
+                                                        <input id='title' type='text' name='title' defaultValue={this.state.wishlist.title} autofocus required />
+                                                        <label className='active' htmlFor='title'>Title</label>
                                                     </div>
                                                 </div>
                                                 <div className='row'>
-                                                    <div className="switch">
+                                                    <div className='switch'>
                                                         <label>
                                                             Public
-                                                            <input name='privacy' type="checkbox" defaultChecked={this.state.wishlist.privacy === 'public' ? false : true} />
-                                                            <span className="active lever"></span>
+                                                            <input name='privacy' type='checkbox' defaultChecked={this.state.wishlist.privacy === 'public' ? false : true} />
+                                                            <span className='active lever'></span>
                                                             Private
                                                         </label>
                                                     </div>

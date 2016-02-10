@@ -159,18 +159,18 @@ export default class Wishlist extends WishlistBase {
                                             <div className='col s12'>
                                                 <button className='dropdown-button btn full-width top-spacer-small' href='#' data-beloworigin='true' data-activates='sortbydate_drop'>Sort By Date</button>
                                                 <ul onClick={this.wishlistItemsFilterSort.bind(this)} id='sortbydate_drop' className='dropdown-content'>
-                                                    <li><a className='drop-down-selected' data-order='desc' href="#">Newest first</a></li>
-                                                    <li><a data-order='asc' href="#">Oldest first</a></li>
+                                                    <li><a className='drop-down-selected' data-order='desc' href='#'>Newest first</a></li>
+                                                    <li><a data-order='asc' href='#'>Oldest first</a></li>
                                                 </ul>
                                             </div>
                                             <div className='col s12'>
                                                 <button className='dropdown-button btn full-width top-spacer-small' href='#' data-beloworigin='true' data-activates='priority_drop'>Filter By Priority</button>
                                                 <ul onClick={this.wishlistItemsFilterSort.bind(this)} id='priority_drop' className='dropdown-content'>
-                                                    <li><a data-priority={5} href="#">5 (most wanted)</a></li>
-                                                    <li><a data-priority={4} href="#">4</a></li>
-                                                    <li><a data-priority={3} href="#">3</a></li>
-                                                    <li><a data-priority={2} href="#">2</a></li>
-                                                    <li><a data-priority={1} href="#">1 (least wanted)</a></li>
+                                                    <li><a data-priority={5} href='#'>5 (most wanted)</a></li>
+                                                    <li><a data-priority={4} href='#'>4</a></li>
+                                                    <li><a data-priority={3} href='#'>3</a></li>
+                                                    <li><a data-priority={2} href='#'>2</a></li>
+                                                    <li><a data-priority={1} href='#'>1 (least wanted)</a></li>
                                                 </ul>
                                             </div>
                                             <div className='col s12'>

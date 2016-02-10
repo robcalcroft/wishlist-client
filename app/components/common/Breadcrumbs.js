@@ -13,8 +13,8 @@ export default class Breadcrumbs extends React.Component {
     render() {
         return (
             <nav style={{marginTop: '5vh'}}>
-                <div className="nav-wrapper">
-                    <div className="col s12" style={{paddingLeft: '20px'}}>
+                <div className='nav-wrapper'>
+                    <div className='col s12' style={{paddingLeft: '20px'}}>
                         {this.processBreadcrumbs(this.props.breadcrumbs)}
                     </div>
                 </div>

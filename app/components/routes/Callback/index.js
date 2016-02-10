@@ -5,8 +5,8 @@ import '../../../scripts/purl';
 
 const COMP_LOADING = (
     <div>
-        <div className="progress" style={{marginTop: '5vh'}}>
-            <div className="indeterminate"></div>
+        <div className='progress' style={{marginTop: '5vh'}}>
+            <div className='indeterminate'></div>
         </div>
         <h5 className='center'>Please wait while we authenticate your details</h5>
     </div>

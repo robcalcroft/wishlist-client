@@ -10,8 +10,8 @@ export default class UserProfileCard extends React.Component {
         }
 
         return (
-            <div className="card">
-                <div className="card-content">
+            <div className='card'>
+                <div className='card-content'>
                     <div style={{display: 'inline-block'}}>
                         <ProfilePicture emailAddress={this.props.user.emailAddress} />
                     </div>
