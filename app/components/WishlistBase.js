@@ -5,7 +5,7 @@ export default class WishlistBase extends React.Component {
     constructor() {
         super();
 
-        this.wishlistBaseUri = 'http://wishlist.pw';
+        this.wishlistBaseUri = process.env.WISHLIST_BASE_URI;
     }
 
     getBaseUri() {

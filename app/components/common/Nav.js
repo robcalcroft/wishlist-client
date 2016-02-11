@@ -36,7 +36,7 @@ export default class Nav extends WishlistBase {
                                 <a href='http://wishlist.pw/sign-up'>Sign Up</a>
                             </li>
                             <li>
-                                <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=f6effb0a6eaf48daf2e9588d76733592&redirect_uri=http://localhost:8001/callback`}>Log In</a>
+                                <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=${process.env.WISHLIST_CLIENT_ID}&redirect_uri=${process.env.WISHLIST_REDIRECT_URI}`}>Log In</a>
                             </li>
                         </ul>
                     }
@@ -55,7 +55,7 @@ export default class Nav extends WishlistBase {
                                     <a href='http://wishlist.pw/sign-up'>Sign Up</a>
                                 </li>
                                 <li>
-                                    <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=f6effb0a6eaf48daf2e9588d76733592&redirect_uri=http://localhost:8001/callback`}>Log In</a>
+                                    <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=${process.env.WISHLIST_CLIENT_ID}&redirect_uri=${process.env.WISHLIST_REDIRECT_URI}`}>Log In</a>
                                 </li>
                             </ul>
                         }

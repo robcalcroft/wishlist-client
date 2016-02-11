@@ -1,5 +1,8 @@
 import path from "path";
 import webpack from 'webpack';
+import dotenv from 'dotenv';
+
+dotenv.load();
 
 export default {
     entry: [
@@ -40,6 +43,14 @@ export default {
             $: 'jquery',
             'window.jQuery': 'jquery',
             moment: 'moment'
+        }),
+        new webpack.DefinePlugin({
+          'process.env': {
+            'WISHLIST_CLIENT_ID': `'${process.env.WISHLIST_CLIENT_ID}'`,
+            'WISHLIST_CLIENT_SECRET': `'${process.env.WISHLIST_CLIENT_SECRET}'`,
+            'WISHLIST_REDIRECT_URI': `'${process.env.WISHLIST_REDIRECT_URI}'`,
+            'WISHLIST_BASE_URI': `'${process.env.WISHLIST_BASE_URI}'`
+          }
         })
     ]
 };
