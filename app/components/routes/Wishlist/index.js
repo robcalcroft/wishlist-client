@@ -25,6 +25,27 @@ export default class Wishlist extends WishlistBase {
         };
     }
 
+    updateWishlistItemHandler(event) {
+        event.preventDefault();
+        const form = $(event.target);
+        const formData = form.serializeArray();
+        let updatedFields = {};
+        let length = formData.length;
+        while(length--) {
+            updatedFields[formData[length].name] = formData[length].value;
+        }
+        updatedFields.wishlist_item_id = form.data('wishlistitemid');
+        this.wishlistAPI({
+            uri: '/api/1/wishlist/item',
+            method: 'PUT',
+            data: updatedFields
+        })
+        .then(() => {
+            $(`#wishlist-item-edit-modal-${form.data('wishlistitemid')}`).closeModal();
+            this.loadWishlistItems({ wishlist_id: this.props.params.wishlistId });
+        })
+        .catch(this.errorHandler);
+    }
 
     deleteWishistItemHandler(event) {
         event.preventDefault();
@@ -157,7 +178,7 @@ export default class Wishlist extends WishlistBase {
                                     <div className='card-content'>
                                         <div className='row'>
                                             <div className='col s12'>
-                                                <button className='dropdown-button btn full-width top-spacer-small' href='#' data-beloworigin='true' data-activates='sortbydate_drop'>Sort By Date</button>
+                                                <button className='dropdown-button btn full-width top-spacer-small' data-beloworigin='true' data-activates='sortbydate_drop'>Sort By Date</button>
                                                 <ul onClick={this.wishlistItemsFilterSort.bind(this)} id='sortbydate_drop' className='dropdown-content'>
                                                     <li><a className='drop-down-selected' data-order='desc' href='#'>Newest first</a></li>
                                                     <li><a data-order='asc' href='#'>Oldest first</a></li>
@@ -187,11 +208,12 @@ export default class Wishlist extends WishlistBase {
                     </div>
                     <div className='col l8 s12'>
                         <NewWishlistItem
-                            loadWishlistItems={this.loadWishlistItems.bind(this)}
+                            loadItems={this.loadWishlistItems.bind(this)}
                             wishlistId={this.state.wishlist.wishlistId}
                         />
                         <WishlistItemCardList
                             deleteHandler={this.deleteWishistItemHandler.bind(this)}
+                            updateHandler={this.updateWishlistItemHandler.bind(this)}
                             wishlistItems={this.state.wishlistItems}
                         />
                     </div>

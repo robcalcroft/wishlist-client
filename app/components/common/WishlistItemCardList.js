@@ -16,7 +16,8 @@ export default class WishlistItemCardList extends WishlistBase {
             return (
                 <WishlistItemCard
                     key={wishlistItem.wishlistItemId}
-                    deleteHandler={this.props.deleteHandler} 
+                    updateHandler={this.props.updateHandler}
+                    deleteHandler={this.props.deleteHandler}
                     wishlistItem={wishlistItem}
                 />
             );

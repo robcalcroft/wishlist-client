@@ -42,7 +42,7 @@ export default class NewWishlistItem extends WishlistBase {
                 this.setState({
                     loading: false
                 });
-                this.props.loadWishlistItems({ wishlist_id: this.props.wishlistId });
+                this.props.loadItems({ wishlist_id: this.props.wishlistId });
                 uriField.val('');
                 $('#create_wishlist_item_modal').closeModal();
             })
@@ -54,7 +54,7 @@ export default class NewWishlistItem extends WishlistBase {
                 this.errorHandler(err);
             });
         })
-        .catch((err) => {
+        .catch(err => {
             this.setState({
                 loading: false,
                 wishlistItemCreateError: err.responseJSON.message
