@@ -33,7 +33,7 @@ export default class Nav extends WishlistBase {
                         </ul>:
                         <ul className='hide-on-med-and-down right'>
                             <li>
-                                <a href='http://wishlist.pw/sign-up'>Sign Up</a>
+                                <a href={`http://${this.wishlistBaseUri}/sign-up`}>Sign Up</a>
                             </li>
                             <li>
                                 <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=${process.env.WISHLIST_CLIENT_ID}&redirect_uri=${process.env.WISHLIST_REDIRECT_URI}`}>Log In</a>
@@ -52,7 +52,7 @@ export default class Nav extends WishlistBase {
                             </ul>:
                             <ul>
                                 <li>
-                                    <a href='http://wishlist.pw/sign-up'>Sign Up</a>
+                                    <a href={`http://${this.wishlistBaseUri}/sign-up`}>Sign Up</a>
                                 </li>
                                 <li>
                                     <a href={`${this.wishlistBaseUri}/api/1/auth/authorize?response_type=code&client_id=${process.env.WISHLIST_CLIENT_ID}&redirect_uri=${process.env.WISHLIST_REDIRECT_URI}`}>Log In</a>
