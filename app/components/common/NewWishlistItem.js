@@ -1,6 +1,7 @@
 import React from 'react';
 import WishlistBase from '../WishlistBase';
 import Spinner from './Spinner';
+import _ from 'underscore';
 
 export default class NewWishlistItem extends WishlistBase {
 
@@ -90,7 +91,7 @@ export default class NewWishlistItem extends WishlistBase {
                                         <form onSubmit={(event => event.preventDefault())}>
                                             <div className='row'>
                                                 <div className='input-field'>
-                                                    <input onChange={this.uriChangeHandler.bind(this)} id='source_uri' type='text' name='source_uri' autofocus required />
+                                                    <input onChange={_.debounce(this.uriChangeHandler.bind(this), 500)} id='source_uri' type='text' name='source_uri' autofocus required />
                                                     <label htmlFor='source_uri'>Website Link</label>
                                                 </div>
                                             </div>
