@@ -87,7 +87,7 @@ export default class NewWishlistItem extends WishlistBase {
                                 {this.state.wishlistItemCreateError ? <b className='red-text'>{this.state.wishlistItemCreateError}</b> : null}
                                 <div className='row'>
                                     <div className='col l6 m8 s12'>
-                                        <form onSubmit={this.props.wishlistItemCreateSubmitHandler}>
+                                        <form onSubmit={(event => event.preventDefault())}>
                                             <div className='row'>
                                                 <div className='input-field'>
                                                     <input onChange={this.uriChangeHandler.bind(this)} id='source_uri' type='text' name='source_uri' autofocus required />
