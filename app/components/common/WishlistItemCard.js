@@ -24,7 +24,7 @@ export default class WishlistItemCard extends WishlistBase {
                         </div>
                         <div className='col s12 m5'>
                             <h6>{this.props.wishlistItem.title}</h6>
-                            <h6>{`${this.props.wishlistItem.priceCurrencySymbol || '£'}${this.props.wishlistItem.price || '-'}`}</h6>
+                            <h6>{`${this.props.wishlistItem.priceCurrencySymbol || ''}${this.props.wishlistItem.price || '-'}`}</h6>
                             <p className='grey-text'>{this.props.wishlistItem.description}</p>
                             <p>
                                 Sold by <b>{this.props.wishlistItem.sourceName}</b>

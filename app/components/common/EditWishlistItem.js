@@ -89,25 +89,27 @@ export default class EditWishlistItem extends WishlistBase {
                                                     </div>
                                                 </div>
                                                 <div className='row'>
-                                                    <div className='input-field'>
-                                                        <input id='price' type='text' name='price' defaultValue={this.state.wishlistItem.price} />
-                                                        <label className='active' htmlFor='price'>Price</label>
+                                                    <div className='col s4'>
+                                                        <div className='input-field'>
+                                                            <select value={this.state.wishlistItem.priceCurrencySymbol} name='price_currency_symbol'>
+                                                                <option value=''>Select currency symbol</option>
+                                                                <option value='£'>£</option>
+                                                                <option value='$'>$</option>
+                                                                <option value='€'>€</option>
+                                                            </select>
+                                                            <label>Currency Symbol</label>
+                                                        </div>
+                                                    </div>
+                                                    <div className='col s8'>
+                                                        <div className='input-field'>
+                                                            <input id='price' type='text' name='price' defaultValue={this.state.wishlistItem.price} />
+                                                            <label className='active' htmlFor='price'>Price</label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div className='row'>
                                                     <div className='input-field'>
-                                                        <select name='price_currency_symbol'>
-                                                            <option value=''>Select currency symbol</option>
-                                                            <option value='£'>£</option>
-                                                            <option value='$'>$</option>
-                                                            <option value='€'>€</option>
-                                                        </select>
-                                                        <label>Currency Symbol</label>
-                                                    </div>
-                                                </div>
-                                                <div className='row'>
-                                                    <div className='input-field'>
-                                                        <select name='user_priority'>
+                                                        <select value={this.state.wishlistItem.userPriority} name='user_priority'>
                                                             <option value=''>Select item priority</option>
                                                             <option value='5'>I must have this</option>
                                                             <option value='4'>This would be great</option>
