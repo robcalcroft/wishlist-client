@@ -45,7 +45,7 @@ export default class EditWishlistItem extends WishlistBase {
     render() {
         return (
         <div className='editWishlistItem'>
-                <button id={this.modalButtonId} data-target={this.modalId} className='modal-trigger darken-1 waves-effect waves-light btn full-width top-spacer-small'>Edit Wishlist Item</button>
+                <button id={this.modalButtonId} data-target={this.modalId} className='modal-trigger darken-1 waves-effect waves-light btn full-width top-spacer-small'>Edit</button>
 
                 <div id={this.modalId} className='modal bottom-sheet'>
                     <div className='modal-content'>
