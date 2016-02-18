@@ -49,6 +49,9 @@ export default class Nav extends WishlistBase {
                                 <li className='active'>
                                     <a href={`/${this.props.username}`}>{this.props.username}</a>
                                 </li>
+                                <li>
+                                    <a onClick={this.logoutClickHandler.bind(this)} href='#'>Logout</a>
+                                </li>
                             </ul>:
                             <ul>
                                 <li>

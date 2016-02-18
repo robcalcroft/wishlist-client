@@ -112,3 +112,49 @@ button.full-width {
         height: 20px;
     }
 }
+
+.nav-home {
+    width: 75vw;
+    margin: 0 auto;
+    a {
+        color: black;
+    }
+    @media (max-width: 600px) {
+        width: 95vw;
+    }
+}
+
+.jumbotron {
+    header {
+        padding-top: 10vh;
+        margin-bottom: 7.5vh;
+        font-size: 5rem;
+        border-bottom: 10px solid #ffc107;
+        display: inline-block;
+        @media (max-width: 600px) {
+            font-size: 3.5rem;
+            border-width: 5px;
+        }
+    }
+    .hero {
+        padding-top: 7.5vh;
+        .material-icons {
+            font-size: 4rem;
+        }
+    }
+}
+
+.inner-react-container {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.inner-react-container > main {
+    flex: 1 0 auto;
+}
+
+
+.page-footer a, .page-footer span {
+    padding-right: 2vw;
+}
