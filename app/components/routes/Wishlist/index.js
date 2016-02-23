@@ -67,6 +67,7 @@ export default class Wishlist extends WishlistBase {
         })
         .then(() => {
             this.loadWishlistItems({ wishlist_id: this.props.params.wishlistId });
+            this.loadWishlist(this.props.params.wishlistId);
         })
         .catch(this.errorHandler);
     }
@@ -213,6 +214,7 @@ export default class Wishlist extends WishlistBase {
                         <NewWishlistItem
                             loadItems={this.loadWishlistItems.bind(this)}
                             wishlistId={this.state.wishlist.wishlistId}
+                            loadWishlist={this.loadWishlist.bind(this)}
                         />
                         <WishlistItemCardList
                             deleteHandler={this.deleteWishistItemHandler.bind(this)}

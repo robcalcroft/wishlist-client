@@ -44,6 +44,7 @@ export default class NewWishlistItem extends WishlistBase {
                     loading: false
                 });
                 this.props.loadItems({ wishlist_id: this.props.wishlistId });
+                this.props.loadWishlist(this.props.wishlistId);
                 uriField.val('');
                 $('#create_wishlist_item_modal').closeModal();
             })
