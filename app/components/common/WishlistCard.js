@@ -13,7 +13,7 @@ export default class WishlistCard extends WishlistBase {
 
         return (
             <div id={`wishlistCard${this.props.wishlist.wishlistId}`}>
-                    <div className='card'>
+                    <div className='card fadein'>
                         <div className='card-content' style={{color: 'black'}}>
                             <div className='row'>
                                 <div className={`col ${this.props.vertical ? 's12' : 'l4 m6 s12'}`}>

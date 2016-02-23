@@ -16,7 +16,7 @@ export default class WishlistItemCard extends WishlistBase {
         }
 
         return (
-            <div className='card' key={this.props.wishlistItem.wishlistItemId}>
+            <div className='card fadein' key={this.props.wishlistItem.wishlistItemId}>
                 <div className='card-content'>
                     <div className='row'>
                         <div className='col s12 m3'>

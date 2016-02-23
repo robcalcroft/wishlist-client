@@ -158,3 +158,12 @@ button.full-width {
 .page-footer a, .page-footer span {
     padding-right: 2vw;
 }
+
+
+.fadein {
+    animation: fadein .25s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
