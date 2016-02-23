@@ -52,7 +52,10 @@ export default class Profile extends WishlistBase {
             });
             this.loadWishlists(this.state.user.userId);
         })
-        .catch(this.errorHandler);
+        .catch(err => {
+            this.errorHandler(err);
+            this.changePageTo(localStorage.getItem('username') || '/');
+        });
 
     }
 
