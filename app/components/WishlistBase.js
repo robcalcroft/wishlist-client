@@ -35,9 +35,7 @@ export default class WishlistBase extends React.Component {
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                 }
             })
-            .done((result) => {
-                resolve(result);
-            })
+            .done(resolve)
             .fail((response) => {
                 if(response.status === 401 && !options.rtRetry) {
                     return $.ajax({
@@ -52,7 +50,8 @@ export default class WishlistBase extends React.Component {
                         options.rtRetry = true;
                         this.wishlistAPI(options).then(resolve).catch(reject);
                     })
-                    .fail((response_1) => {
+                    .fail(response_1 => {
+                        localStorage.clear();
                         reject(response_1);
                     });
                 }
