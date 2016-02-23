@@ -138,6 +138,9 @@ export default class Profile extends WishlistBase {
     }
 
     render() {
+        if(!this.state.initialLoad) {
+            return false;
+        }
         return (
             <Container username={localStorage.getItem('username')}>
                 <div className='row' style={{marginTop: '5vh'}}>
