@@ -44,11 +44,16 @@ export default class WishlistCard extends WishlistBase {
                                         this.props.showControls === 'false' ? null :
                                         <div className='cardControls'>
                                             <Link style={{color:'white !important'}} to={`/${this.props.username}/wishlist/${this.props.wishlist.wishlistId}`}><button className='waves-effect waves-light btn full-width top-spacer-small'>View</button></Link>
-                                            <EditWishlist
-                                                updateHandler={this.props.updateHandler}
-                                                wishlistId={this.props.wishlist.wishlistId}
-                                            />
-                                            <button onClick={this.props.deleteHandler} data-wishlistid={this.props.wishlist.wishlistId} className='red darken-1 waves-effect waves-light btn full-width top-spacer-small'>Delete</button>
+                                            {
+                                                this.props.editable === 'false' ? null :
+                                                <div className='edit-controls'>
+                                                    <EditWishlist
+                                                        updateHandler={this.props.updateHandler}
+                                                        wishlistId={this.props.wishlist.wishlistId}
+                                                    />
+                                                    <button onClick={this.props.deleteHandler} data-wishlistid={this.props.wishlist.wishlistId} className='red darken-1 waves-effect waves-light btn full-width top-spacer-small'>Delete</button>
+                                                </div>
+                                            }
                                         </div>
                                     }
                                 </div>

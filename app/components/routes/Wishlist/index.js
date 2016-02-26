@@ -211,15 +211,19 @@ export default class Wishlist extends WishlistBase {
                         </div>
                     </div>
                     <div className='col l8 s12'>
-                        <NewWishlistItem
-                            loadItems={this.loadWishlistItems.bind(this)}
-                            wishlistId={this.state.wishlist.wishlistId}
-                            loadWishlist={this.loadWishlist.bind(this)}
-                        />
+                        {
+                            localStorage.getItem('username') !== this.props.params.username ? null :
+                            <NewWishlistItem
+                                loadItems={this.loadWishlistItems.bind(this)}
+                                wishlistId={this.state.wishlist.wishlistId}
+                                loadWishlist={this.loadWishlist.bind(this)}
+                            />
+                        }
                         <WishlistItemCardList
                             deleteHandler={this.deleteWishistItemHandler.bind(this)}
                             updateHandler={this.updateWishlistItemHandler.bind(this)}
                             wishlistItems={this.state.wishlistItems}
+                            editable={localStorage.getItem('username') === this.props.params.username ? 'true' : 'false'}
                         />
                     </div>
                 </div>

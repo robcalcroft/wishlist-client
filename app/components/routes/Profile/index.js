@@ -148,15 +148,19 @@ export default class Profile extends WishlistBase {
                         <UserProfileCard user={this.state.user} />
                     </div>
                     <div className='col s12 l8'>
-                        <NewWishlist
-                            error={this.state.wishlistCreateError}
-                            createHandler={this.wishlistCreateHandler.bind(this)}
-                        />
+                        {
+                            localStorage.getItem('username') !== this.state.user.username ? null :
+                            <NewWishlist
+                                error={this.state.wishlistCreateError}
+                                createHandler={this.wishlistCreateHandler.bind(this)}
+                            />
+                        }
                         <WishlistCardList
                             updateHandler={this.wishlistUpdateHandler.bind(this)}
                             deleteHandler={this.wishlistDeleteHandler.bind(this)}
                             wishlists={this.state.wishlists}
                             username={this.state.user.username}
+                            editable={localStorage.getItem('username') === this.state.user.username ? 'true' : 'false'}
                         />
                     </div>
                 </div>

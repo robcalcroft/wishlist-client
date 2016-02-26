@@ -21,7 +21,8 @@ export default class WishlistCardList extends WishlistBase {
                     username={this.props.username}
                     wishlist={wishlist}
                     updateHandler={this.props.updateHandler}
-                    deleteHandler={this.props.deleteHandler} 
+                    deleteHandler={this.props.deleteHandler}
+                    editable={this.props.editable} 
                 />
             );
         });
