@@ -27,7 +27,7 @@ export default class WishlistCard extends WishlistBase {
                                         </span>
                                     </p>
                                     <p>
-                                        <i className='material-icons'>visibility</i>
+                                        {this.props.wishlist.privacy === 'public' ? <i className='material-icons'>visibility</i> : <i className="material-icons">visibility_off</i>}
                                         <span className='text-left-of-icon'>
                                             {this.props.wishlist.privacy ? (`${this.props.wishlist.privacy[0].toUpperCase()}${this.props.wishlist.privacy.substr(1)} ${this.props.wishlist.privacy === 'public' ? '(Anyone can view)': '(Only you can view)'}`): ''}
                                         </span>
