@@ -76,7 +76,7 @@ export default class Home extends WishlistBase {
                 </header>
                 <main className='container'>
                     <div className='jumbotron center'>
-                        <header className='brand-font'>You waan&#39; it? Yaaas!</header>
+                        <header className='brand-font'>Wishlist? Sorted.</header>
                         <div className='row'>
                             <div className='col m4 hero' style={{paddingTop: '7.5vh'}}>
                                 <i className='material-icons'>language</i>
