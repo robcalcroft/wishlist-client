@@ -92,7 +92,7 @@ export default class NewWishlistItem extends WishlistBase {
                                         <form onSubmit={(event => event.preventDefault())}>
                                             <div className='row'>
                                                 <div className='input-field'>
-                                                    <input onChange={_.compose(_.debounce(this.uriChangeHandler.bind(this), 500), _.clone)} id='source_uri' type='text' name='source_uri' autofocus required />
+                                                    <input onChange={_.compose(_.debounce(this.uriChangeHandler.bind(this), 500), _.clone)} id='source_uri' type='text' name='source_uri' autoFocus required />
                                                     <label htmlFor='source_uri'>Website Link</label>
                                                 </div>
                                             </div>

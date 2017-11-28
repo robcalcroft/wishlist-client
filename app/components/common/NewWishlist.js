@@ -29,7 +29,7 @@ export default class NewWishlist extends React.Component {
                                         <form onSubmit={this.props.createHandler}>
                                             <div className='row'>
                                                 <div className='input-field'>
-                                                    <input id='title' type='text' name='title' autofocus required />
+                                                    <input id='title' type='text' name='title' autoFocus required />
                                                     <label htmlFor='title'>Title</label>
                                                 </div>
                                             </div>

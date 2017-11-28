@@ -56,7 +56,7 @@ export default class EditWishlist extends WishlistBase {
                                             <form onSubmit={this.props.updateHandler} data-wishlistid={this.props.wishlistId}>
                                                 <div className='row'>
                                                     <div className='input-field'>
-                                                        <input id='title' type='text' name='title' defaultValue={this.state.wishlist.title} autofocus required />
+                                                        <input id='title' type='text' name='title' defaultValue={this.state.wishlist.title} autoFocus required />
                                                         <label className='active' htmlFor='title'>Title</label>
                                                     </div>
                                                 </div>

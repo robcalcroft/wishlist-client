@@ -91,11 +91,11 @@ export default class EditWishlistItem extends WishlistBase {
                                                 <div className='row'>
                                                     <div className='col s4'>
                                                         <div className='input-field'>
-                                                            <select value={this.state.wishlistItem.priceCurrencySymbol} name='price_currency_symbol'>
-                                                                <option value=''>Select currency symbol</option>
-                                                                <option value='£'>£</option>
-                                                                <option value='$'>$</option>
-                                                                <option value='€'>€</option>
+                                                            <select defaultValue={this.state.wishlistItem.priceCurrencySymbol || ''} name='price_currency_symbol'>
+                                                                <option defaultValue=''>Select currency symbol</option>
+                                                                <option defaultValue='£'>£</option>
+                                                                <option defaultValue='$'>$</option>
+                                                                <option defaultValue='€'>€</option>
                                                             </select>
                                                             <label>Currency Symbol</label>
                                                         </div>
@@ -109,13 +109,13 @@ export default class EditWishlistItem extends WishlistBase {
                                                 </div>
                                                 <div className='row'>
                                                     <div className='input-field'>
-                                                        <select value={this.state.wishlistItem.userPriority} name='user_priority'>
-                                                            <option value=''>Select item priority</option>
-                                                            <option value='5'>I must have this</option>
-                                                            <option value='4'>This would be great</option>
-                                                            <option value='3'>I'd like this</option>
-                                                            <option value='2'>I'm not too bothered about this</option>
-                                                            <option value='1'>I'm not sure if I still want this</option>
+                                                        <select defaultValue={this.state.wishlistItem.userPriority} name='user_priority'>
+                                                            <option defaultValue=''>Select item priority</option>
+                                                            <option defaultValue='5'>I must have this</option>
+                                                            <option defaultValue='4'>This would be great</option>
+                                                            <option defaultValue='3'>I'd like this</option>
+                                                            <option defaultValue='2'>I'm not too bothered about this</option>
+                                                            <option defaultValue='1'>I'm not sure if I still want this</option>
                                                         </select>
                                                         <label>Priority</label>
                                                     </div>

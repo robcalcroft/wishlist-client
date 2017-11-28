@@ -14,7 +14,7 @@ import './styles/wishlist.scss';
 
 // Scripts
 import './scripts/is-mobile.js';
-import 'materialize-css/dist/js/materialize.js';
+// import 'materialize-css/dist/js/materialize.js';
 
 ReactDOM.render(
     <Router history={browserHistory}>

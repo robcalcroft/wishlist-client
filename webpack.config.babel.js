@@ -11,6 +11,7 @@ export default {
     output: {
         path: path.resolve(__dirname, 'public/dist'),
         filename: 'bundle.js',
+        publicPath: '/public/',
     },
     resolve: {
         alias: {
@@ -29,7 +30,7 @@ export default {
             },
             {
                 test: /\.s?css$/,
-                loader: 'style!css!sass'
+                loader: 'style-loader!css-loader!sass-loader'
             },
             {
                 test: /\.(woff|woff2|ttf|eot|svg)$/,
@@ -39,9 +40,6 @@ export default {
     },
     plugins: [
         new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            $: 'jquery',
-            'window.jQuery': 'jquery',
             moment: 'moment'
         }),
         new webpack.DefinePlugin({
