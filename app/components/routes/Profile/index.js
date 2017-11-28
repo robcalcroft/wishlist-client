@@ -54,7 +54,7 @@ export default class Profile extends WishlistBase {
         })
         .catch(err => {
             this.errorHandler(err);
-            this.changePageTo(localStorage.getItem('username') || '/');
+            // this.changePageTo(localStorage.getItem('username') || '/');
         });
 
     }

@@ -7,7 +7,7 @@ export default class Home extends WishlistBase {
     }
 
     componentDidMount() {
-        $('.button-collapse').sideNav();
+        // $('.button-collapse').sideNav();
     }
 
     logoutClickHandler(event) {

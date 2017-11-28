@@ -16,6 +16,9 @@ export default class WishlistBase extends React.Component {
         if(!uri) {
             throw new Error('No URI present');
         }
+        if (uri === document.location.href) {
+          return true;
+        }
         document.location.href = uri;
     }
 

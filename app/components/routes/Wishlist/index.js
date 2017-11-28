@@ -107,7 +107,7 @@ export default class Wishlist extends WishlistBase {
         })
         .catch(err => {
             this.errorHandler(err);
-            this.changePageTo(localStorage.getItem('username') || '/');
+            // this.changePageTo(localStorage.getItem('username') || '/');
         });
     }
 

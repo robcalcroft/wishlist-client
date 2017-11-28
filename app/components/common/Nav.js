@@ -4,7 +4,7 @@ import WishlistBase from '../WishlistBase';
 export default class Nav extends WishlistBase {
 
     componentDidMount() {
-        $('.button-collapse').sideNav();
+        // $('.button-collapse').sideNav();
     }
 
     logoutClickHandler(event) {
